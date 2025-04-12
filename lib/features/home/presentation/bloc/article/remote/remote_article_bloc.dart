@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:clean_demo/core/resources/data_state.dart';
 import 'package:clean_demo/features/home/domain/usecases/get_article.dart';
 import 'package:clean_demo/features/home/presentation/bloc/article/remote/remote_article_event.dart';
@@ -17,12 +15,10 @@ class RemoteArticleBloc extends Bloc<RemoteArticlesEvent, RemoteArticleState> {
   void onGetArticles(
       GetArticles event, Emitter<RemoteArticleState> emit) async {
     final dataState = await _getArticleUseCase();
-
     if (dataState is DataSuccess) {
       emit(RemoteArticlesDone(dataState.data!));
     }
     if (dataState is DataFailed) {
-      log(dataState.error!.response.toString());
       emit(RemoteArticlesError(dataState.error!));
     }
   }

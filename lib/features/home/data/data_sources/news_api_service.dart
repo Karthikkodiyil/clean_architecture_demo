@@ -1,3 +1,5 @@
+
+
 import 'package:clean_demo/core/constants/constants.dart';
 import 'package:clean_demo/features/home/data/model/article.dart';
 import 'package:dio/dio.dart';
@@ -14,5 +16,7 @@ abstract class NewsApiService {
     @Query("apiKey") String? apiKey,    
     @Query("country") String? country,  
     @Query("category") String? category, 
+   
+
   });
 }
