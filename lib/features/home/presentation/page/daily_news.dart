@@ -8,11 +8,12 @@ class DailyNews extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Daily News"),
+        title: const Text(
+          "Daily News",
+          style: TextStyle(color: Colors.white),
+        ),
       ),
       body: const NewsWidget(),
     );
   }
 }
-
-

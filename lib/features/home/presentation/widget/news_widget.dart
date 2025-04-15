@@ -33,10 +33,11 @@ class NewsWidget extends StatelessWidget {
         List<ArticleEntity> article = state.articles!;
         return ArticleWidget(
           article: article,
-          state: state,
         );
       }
-      return const SizedBox();
+      return const SizedBox(
+        child: Text("No News"),
+      );
     });
   }
 }
@@ -45,11 +46,9 @@ class ArticleWidget extends StatelessWidget {
   const ArticleWidget({
     super.key,
     required this.article,
-    required this.state,
   });
 
   final List<ArticleEntity> article;
-  final RemoteArticleState state;
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +56,7 @@ class ArticleWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 8),
       child: ListView.builder(
-          itemCount: state.articles!.length,
+          itemCount: article.length,
           itemBuilder: (context, index) {
             return Padding(
               padding: const EdgeInsets.only(bottom: 12.0),
@@ -93,7 +92,11 @@ class ArticleWidget extends StatelessWidget {
                         width: size.width * 0.65,
                         child: Column(
                           children: [
-                            Text(article[index].title ?? ""),
+                            Text(
+                              article[index].title ?? "",
+                              style: const TextStyle(
+                                  fontFamily: "poppins", fontSize: 18),
+                            ),
                             Align(
                                 alignment: Alignment.bottomRight,
                                 child: Text(

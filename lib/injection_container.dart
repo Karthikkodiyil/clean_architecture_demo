@@ -10,10 +10,12 @@ final sl = GetIt.instance;
 
 Future<void> initializeDependencies() async {
 
+
   sl.registerSingleton<Dio>(Dio());
   sl.registerSingleton<NewsApiService>(NewsApiService(sl()));
   sl.registerSingleton<ArticleRepository>(ArticleRepositoryImpl(sl()));
   sl.registerSingleton<GetArticleUseCase>(GetArticleUseCase(sl()));
   sl.registerFactory<RemoteArticleBloc>(() => RemoteArticleBloc(sl()));
+
  
 }
